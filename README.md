@@ -1,4 +1,5 @@
-##Proyecto control de costos
+#Proyecto control de costos
+##Se pide generar un pseudocódigo.....
 
 Algoritmo CalcularCostoProducto
     Definir precioOriginal, descuentoCupon, IVA, descuentoCantidad, costoEnvio, costoFinal Como Real;
