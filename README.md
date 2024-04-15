@@ -1,50 +1,84 @@
-#Proyecto control de costos
-##Se pide generar un pseudocódigo.....
 
-Algoritmo CalcularCostoProducto
-    Definir precioOriginal, descuentoCupon, IVA, descuentoCantidad, costoEnvio, costoFinal Como Real;
-    Definir cantidad, peso, costoFijoEnvio, costoPorKg Como Entero;
-    Definir destino Como Caracter;
+# Proyecto 1: Algoritmo de sistema de costos
+
+images/banner.png
+
+
+## Planteamiento
+Se requiere construir un algoritmo en pseudocódigo (PSeInt) que simule el calculo del costo de un producto con base en su precio original y el porcentaje de descuento aplicado. 
+
+## Requerimientos
+
+El algoritmo debe cumplir con los siguientes requisitos:
+Leer el precio original del producto.
+Aplicar un descuento al producto si es aplicable (por ejemplo, si el cliente tiene un cupón de descuento).
+Aplicar impuestos al producto (por ejemplo, el IVA u otros impuestos).
+Si el cliente compra más de un artículo, aplicar un descuento por cantidad.
+Calcular el costo de envío basado en el destino y el peso del paquete.
+Calcular el costo final del producto sumando el precio con descuento, impuestos, descuento por cantidad y costo de envío.
+Se debe mostrar el costo final del producto, desglosando los diferentes componentes (descuentos, impuestos, descuento por cantidad y costo de envío).
+En esta oportunidad el ingreso de cada valor será manual, sin asumir valores por defecto
+## Explicación Paso a Paso de la solución
+1. Primero, se declaran las variables que se utilizarán en el programa:
+
+- `precioOriginal` es la variable donde se almacenará el valor.
+- `descuentoCupon` es la variable donde se almacenará el valor del cupón de descuento
+- `descuentoCantidad` es un arreglo unidimensional de cadenas que almacenará los resultados de las materias (aprobado o reprobado).
+- `costoEnvio` es la variable donde se almacenará el costo de envío.
+
+
+        Algoritmo CalcularCostoProducto //Nombre del Algoritmo
+            Definir precioOriginal, descuentoCupon, descuentoCantidad, costoEnvio, costoFinal Como Real
+            Definir cantidad, peso, costoFijoEnvio, costoPorKg Como Entero
+## Código Completo
+A continuación se desglosa el código completo:
+
+
+    Algoritmo CalcularCostoProducto
+    Definir precioOriginal, descuentoCupon, descuentoCantidad, costoEnvio, costoFinal Como Real
+    Definir cantidad, peso, costoFijoEnvio, costoPorKg Como Entero
     
-    // Datos del producto y la compra
-    precioOriginal := 100;
-    descuentoCupon := 10; // Porcentaje de descuento del cupón
-    IVA := 19; // Porcentaje del IVA
-    cantidad := 2; // Cantidad de pares de zapatos
-    peso := 3; // Peso del paquete en kg
-    destino := "Nueva York"; // Destino del envío
-    costoFijoEnvio := 10; // Costo fijo de envío
-    costoPorKg := 2; // Costo por kg para el envío
     
-    // Aplica descuento del cupón
-    precioConDescuento := precioOriginal - (precioOriginal * descuentoCupon / 100);
+    Escribir "Ingrese el precio original:"
+    Leer precioOriginal
+    Escribir "Ingrese el descuento del cupón (%):"
+    Leer descuentoCupon
+    Escribir "Ingrese la cantidad de productos:"
+    Leer cantidad
+    Escribir "Ingrese el peso del paquete (kg):"
+    Leer peso
+    Escribir "Ingrese el costo fijo de envío:"
+    Leer costoFijoEnvio
+    Escribir "Ingrese el costo por kg para el envío:"
+    Leer costoPorKg
     
-    // Aplicando IVA
-    precioConIVA := precioConDescuento * (1 + IVA / 100);
     
-    // Aplicar descuento por cantidad
+    precioConDescuento <- precioOriginal - (precioOriginal * descuentoCupon / 100)
+    
+    
+    precioConIVA <- precioConDescuento * 1.12
+    
     Si cantidad > 1 Entonces
-        descuentoCantidad := 5; // Porcentaje de descuento por cantidad
-        precioConDescuentoCantidad := precioConIVA * (1 - descuentoCantidad / 100);
+        Escribir "Ingrese el descuento por cantidad (%):"
+        Leer descuentoCantidad
+        precioConDescuentoCantidad <- precioConIVA * (1 - descuentoCantidad / 100)
     SiNo
-        precioConDescuentoCantidad := precioConIVA;
+        precioConDescuentoCantidad <- precioConIVA
     FinSi
     
-    // Calcular costo de envío
-    costoEnvio := costoFijoEnvio + (peso * costoPorKg);
+    costoEnvio <- costoFijoEnvio + (peso * costoPorKg)
     
-    // Calcular costo final
-    costoFinal := (precioConDescuentoCantidad * cantidad) + costoEnvio;
+
+    costoFinal <- (precioConDescuentoCantidad * cantidad) + costoEnvio
     
-    // Mostrar el costo final y desglose
-    Escribir "Costo final del producto: $", costoFinal;
-    Escribir "Desglose:";
-    Escribir "Precio original: $", precioOriginal;
-    Escribir "Descuento por cupón: $", precioOriginal * descuentoCupon / 100;
-    Escribir "Precio con descuento: $", precioConDescuento;
-    Escribir "IVA: $", precioConDescuento * IVA / 100;
-    Escribir "Precio con IVA: $", precioConIVA;
-    Escribir "Descuento por cantidad: $", precioConIVA * descuentoCantidad / 100;
-    Escribir "Precio con descuento por cantidad: $", precioConDescuentoCantidad;
-    Escribir "Costo de envío: $", costoEnvio;
+    Escribir "Costo final del producto: $", costoFinal
+    Escribir "Desglose:"
+    Escribir "Precio original: $", precioOriginal
+    Escribir "Descuento por cupón: $", precioOriginal * descuentoCupon / 100
+    Escribir "Precio con descuento: $", precioConDescuento
+    Escribir "IVA: $", precioConDescuento * 0.19
+    Escribir "Precio con IVA: $", precioConIVA
+    Escribir "Descuento por cantidad: $", precioConIVA * descuentoCantidad / 100
+    Escribir "Precio con descuento por cantidad: $", precioConDescuentoCantidad
+    Escribir "Costo de envío: $", costoEnvio
 FinAlgoritmo
