@@ -1,7 +1,7 @@
 
 # Proyecto 1: Algoritmo de sistema de costos
 
-images/banner.png
+![Banner](images/UDD_logo.jpeg)
 
 
 ## Planteamiento
